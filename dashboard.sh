@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 working_dir=`pwd`
+sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
 
 #Get namesapce variable
 #tenant=`awk '{print $NF}' $working_dir/tenant_export`
@@ -13,6 +16,7 @@ echo "Creating Influxdb jmeter Database"
 ##influxdb_status=`kubectl get po -n $tenant | grep influxdb-jmeter | awk '{print $2}' | grep Running
 
 influxdb_pod=`kubectl get po | grep influxdb-jmeter | awk '{print $1}'`
+echo $influxdb_pod
 kubectl exec -ti $influxdb_pod -- influx -execute 'CREATE DATABASE jmeter'
 
 ## Create the influxdb datasource in Grafana
