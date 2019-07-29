@@ -12,7 +12,7 @@ kubectl config view
 #tenant=`awk '{print $NF}' "$working_dir/tenant_export"`
 
 jmx="$1"
-[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
+#[ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
 
 if [ ! -f "$jmx" ];
 then
