@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 working_dir=`pwd`
-sudo cp /etc/kubernetes/admin.conf $HOME/
-sudo chown $(id -u):$(id -g) $HOME/admin.conf
-export KUBECONFIG=$HOME/admin.conf
+kubectl config view
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+kubectl config view
 
 #Get namesapce variable
 #tenant=`awk '{print $NF}' $working_dir/tenant_export`
