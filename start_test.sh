@@ -32,4 +32,5 @@ kubectl cp "$jmx" "$master_pod:/$test_name"
 ## Echo Starting Jmeter load test
 
 #kubectl exec -ti  $master_pod -- /bin/bash /load_test "$test_name"
+kubectl exec -ti  $master_pod -- /bin/bash jmeter -v
 kubectl exec -ti  $master_pod -- /bin/bash jmeter -n -t "$test_name" -l resultsfile.xml
